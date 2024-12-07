@@ -7,12 +7,15 @@ tags: [writing]
 render_with_liquid: false
 ---
 
+<!-- First Chart -->
+<div id="chart1" style="margin-bottom: 2rem;"></div>
 
-<div id="chart"></div>
+<!-- Second Chart -->
+<div id="chart2"></div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    var options = {
+    var chart1 = new ApexCharts(document.querySelector("#chart1"), {
         series: [
             {
                 name: "High - 2013",
@@ -26,66 +29,49 @@ document.addEventListener('DOMContentLoaded', function() {
         chart: {
             height: 350,
             type: 'line',
-            dropShadow: {
-                enabled: true,
-                color: '#000',
-                top: 18,
-                left: 7,
-                blur: 10,
-                opacity: 0.2
-            },
-            zoom: {
-                enabled: false
-            },
-            toolbar: {
-                show: false
-            }
+            background: '#ffffff',
+            foreColor: '#373d3f'
         },
         colors: ['#77B6EA', '#545454'],
-        dataLabels: {
-            enabled: true,
-        },
-        stroke: {
-            curve: 'smooth'
-        },
         title: {
-            text: 'Average High & Low Temperature',
-            align: 'left'
-        },
-        grid: {
-            borderColor: '#e7e7e7',
-            row: {
-                colors: ['#f3f3f3', 'transparent'],
-                opacity: 0.5
-            },
-        },
-        markers: {
-            size: 1
-        },
-        xaxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-            title: {
-                text: 'Month'
+            text: 'Fixed Light Theme Chart',
+            align: 'left',
+            style: {
+                color: '#373d3f'
             }
         },
-        yaxis: {
-            title: {
-                text: 'Temperature'
-            },
-            min: 5,
-            max: 40
-        },
-        legend: {
-            position: 'top',
-            horizontalAlign: 'right',
-            floating: true,
-            offsetY: -25,
-            offsetX: -5
+        xaxis: {
+            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul']
         }
-    };
+    });
 
-    var chart = new ApexCharts(document.querySelector("#chart"), options);
-    chart.render();
+    var chart2 = new ApexCharts(document.querySelector("#chart2"), {
+        series: [
+            {
+                name: "High - 2013",
+                data: [28, 29, 33, 36, 32, 32, 33]
+            },
+            {
+                name: "Low - 2013",
+                data: [12, 11, 14, 18, 17, 13, 13]
+            }
+        ],
+        chart: {
+            height: 350,
+            type: 'line'
+        },
+        colors: ['#77B6EA', '#545454'],
+        title: {
+            text: 'Dark Mode Adaptive Chart',
+            align: 'left'
+        },
+        xaxis: {
+            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul']
+        }
+    });
+
+    chart1.render();
+    chart2.render();
 });
 </script>
 
